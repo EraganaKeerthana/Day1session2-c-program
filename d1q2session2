@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    int num, last_digit, first_digit, temp, digits = 0;
+    
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    temp = num;
+    while (temp > 0) {
+        digits++;
+        temp /= 10;
+    }
+    
+    last_digit = num % 10;
+    first_digit = num / pow(10, digits-1);
+    
+    temp = num;
+    temp -= last_digit;
+    temp -= first_digit * pow(10, digits-1);
+    temp *= 10;
+    temp += first_digit;
+    temp += last_digit * pow(10, digits-1);
+    
+    printf("New number: %d\n", temp);
+    
+    return 0;
+}
